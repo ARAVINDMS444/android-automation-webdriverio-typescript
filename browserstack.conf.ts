@@ -1,3 +1,7 @@
+import { Helpers } from "./src/utils/Helpers";
+import { Actions } from "./src/utils/Actions";
+import { TestData } from "./src/utils/TestData";
+
 export const config: WebdriverIO.Config = {
   user: process.env.BROWSERSTACK_USERNAME || "aravindms_MWY8zZ",
   key: process.env.BROWSERSTACK_ACCESS_KEY || "21yNs6bLpojGzojxPDc2",
@@ -59,4 +63,12 @@ export const config: WebdriverIO.Config = {
 
   specFileRetries: 2,
   specFileRetriesDeferred: false,
+
+  /**
+   * Runs after all tests are done.
+   */
+  after: async (): Promise<void> => {
+    await Helpers.logOutFromApplication();
+    await Actions.closeApp(TestData.TEST_DATA.SWAG_LABS_DEMO_APP_APP_PACKAGE);
+  },
 };
