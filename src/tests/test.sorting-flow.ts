@@ -19,7 +19,9 @@ describe("Swag Labs Android App - Sorting Flow", () => {
     );
     await sortButton.click();
 
-    const sortOption: ChainablePromiseElement = $("//android.widget.TextView[@text='Price (low to high)']");
+    const sortOption: ChainablePromiseElement = $(
+      "//android.widget.TextView[@text='Price (low to high)']",
+    );
     await sortOption.click();
 
     const productTitle: ChainablePromiseElement = $(
