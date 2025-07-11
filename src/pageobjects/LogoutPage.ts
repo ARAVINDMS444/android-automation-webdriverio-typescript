@@ -1,13 +1,13 @@
 export class LogoutPage {
-  static menuButton(): ChainablePromiseElement {
+  static get menuButton(): ChainablePromiseElement {
     return $("~test-Menu");
   }
 
-  static logoutButton(): ChainablePromiseElement {
+  static get logoutButton(): ChainablePromiseElement {
     return $("~test-LOGOUT");
   }
 
-  static loginButton(): ChainablePromiseElement {
+  static get loginButton(): ChainablePromiseElement {
     return $("~test-LOGIN");
   }
 }
