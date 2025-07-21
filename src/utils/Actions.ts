@@ -176,9 +176,8 @@ export class Actions {
    */
   static async getAttributeValueOfElement(
     element: ChainablePromiseElement,
-    attribute: string,
   ): Promise<string> {
-    return await element.getAttribute(attribute);
+    return await element.getAttribute("value");
   }
 
   /**
@@ -230,8 +229,8 @@ export class Actions {
    */
   static async scrollIntoView(text: string): Promise<void> {
     const maxRetries = 20;
-    let retries = 0;
-    let isTextVisible = false;
+    let retries: number = 0;
+    let isTextVisible: boolean = false;
 
     while (retries < maxRetries && !isTextVisible) {
       try {
@@ -242,7 +241,9 @@ export class Actions {
         });
 
         // Check if the text is now visible
-        const element = await $(`android=new UiSelector().text("${text}")`);
+        const element: ChainablePromiseElement = $(
+          `android=new UiSelector().text("${text}")`,
+        );
         isTextVisible = await element.isDisplayed();
 
         if (!isTextVisible) {
@@ -399,7 +400,7 @@ export class Actions {
         actions: [
           { type: "pointerMove", duration: 0, x: startX, y: startY },
           { type: "pointerDown", button: 0 },
-          { type: "pause", duration: 500 }, // Optional pause for realism
+          { type: "pause", duration: 500 },
           { type: "pointerMove", duration: 1000, x: endX, y: endY },
           { type: "pointerUp", button: 0 },
         ],

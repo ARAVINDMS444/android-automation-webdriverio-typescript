@@ -1,7 +1,7 @@
 import { expect } from "@wdio/globals";
 
-describe("Swag Labs Android App - Login Flow", () => {
-  it("should login successfully with valid credentials", async () => {
+describe("Swag Labs Android App - Login Flow", (): void => {
+  it("should login successfully with valid credentials", async (): Promise<void> => {
     const usernameField: ChainablePromiseElement = $("~test-Username");
     const passwordField: ChainablePromiseElement = $("~test-Password");
     const loginButton: ChainablePromiseElement = $("~test-LOGIN");
