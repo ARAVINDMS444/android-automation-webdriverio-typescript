@@ -11,7 +11,7 @@ export const config: WebdriverIO.Config = {
 
   capabilities: [
     {
-      "appium:platformName": "Android",
+      platformName: "Android",
       "appium:automationName": "UIAutomator2",
       "appium:deviceName": "Pixel 8a",
       "appium:appPackage": TestData.TEST_DATA.SWAG_LABS_DEMO_APP_APP_PACKAGE,

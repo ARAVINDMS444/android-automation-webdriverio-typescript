@@ -27,7 +27,7 @@ export const config: WebdriverIO.Config = {
 
   capabilities: [
     {
-      "appium:platformName": "Android",
+      platformName: "Android",
       "appium:deviceName": "Google Pixel 8",
       "appium:platformVersion": "14.0",
       "appium:automationName": "UIAutomator2",
