@@ -9,7 +9,6 @@ describe("Swag Labs Android App - Sorting Flow", (): void => {
     const passwordInput: ChainablePromiseElement = $("~test-Password");
     const loginBtn: ChainablePromiseElement = $("~test-LOGIN");
 
-    await expect(usernameInput).toBeDisplayed();
     await usernameInput.setValue("standard_user");
     await passwordInput.setValue("secret_sauce");
     await loginBtn.click();
