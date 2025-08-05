@@ -13,6 +13,14 @@ export class Helpers {
     await Actions.isElementDisplayed(LogoutPage.loginButton);
   }
 
+  /**
+   * Checks whether the given collection is in ascending order.
+   * Supports arrays of numbers, arrays of numeric strings, Java-style lists (Array<number>),
+   * and sets of numbers. String arrays are internally converted to numbers for comparison.
+   * @param a - The collection to check. Can be number[], string[], Array<number>, or Set<number>.
+   * @returns True if the collection is sorted in ascending order, otherwise false.
+   * @throws Error if the provided type is unsupported.
+   */
   static isAscending(a: any): boolean {
     let arr: number[] = [];
 
@@ -30,7 +38,7 @@ export class Helpers {
     }
 
     // Check ascending order
-    for (let i = 1; i < arr.length; i++) {
+    for (let i: number = 1; i < arr.length; i++) {
       if (arr[i] < arr[i - 1]) {
         return false;
       }
