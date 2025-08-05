@@ -1,4 +1,7 @@
-import { $, expect } from "@wdio/globals";
+import { $, $$, expect } from "@wdio/globals";
+import { ChainablePromiseElement, ChainablePromiseArray } from "webdriverio";
+import { Actions } from "../utils/Actions";
+import { Helpers } from "../utils/Helpers";
 
 describe("Swag Labs Android App - Sorting Flow", (): void => {
   it("should login and view details of a product", async (): Promise<void> => {
@@ -24,18 +27,24 @@ describe("Swag Labs Android App - Sorting Flow", (): void => {
     );
     await sortOption.click();
 
-    const productTitle: ChainablePromiseElement = $(
-      '//android.widget.TextView[@content-desc="test-Item title" and @text="Sauce Labs Onesie"]',
-    );
-    const productPrice: ChainablePromiseElement = $(
-      '//android.widget.TextView[@content-desc="test-Price" and @text="$7.99"]',
-    );
-    const addToCartBtn: ChainablePromiseElement = $(
-      '(//android.view.ViewGroup[@content-desc="test-ADD TO CART"])[1]',
-    );
+    let scrolls: number = 0;
+    const sortedPrices = new Set<number>();
 
-    await expect(productTitle).toBeDisplayed();
-    await expect(productPrice).toBeDisplayed();
-    await expect(addToCartBtn).toBeDisplayed();
+    while (scrolls < 10) {
+      const products: ChainablePromiseArray = $$(
+        '//android.widget.TextView[contains(@text, "$")]',
+      );
+      const count: number = await products.length;
+
+      for (let i: number = 1; i < count; i++) {
+        const productPrice: string = await products[i].getText();
+        const price: number = parseFloat(productPrice.replace("$", ""));
+        sortedPrices.add(price);
+      }
+      await Actions.scrollDownByPixels(300);
+      scrolls++;
+    }
+
+    expect(Helpers.isAscending(sortedPrices)).toBeTruthy();
   });
 });
