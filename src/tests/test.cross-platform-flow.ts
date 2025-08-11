@@ -30,8 +30,8 @@ describe("Swag Labs - Cross Platform Flow", () => {
     await Actions.waitForSeconds(3000);
     await expect(loginBtnMobile).toBeDisplayed();
 
-    await android.execute('mobile: terminateApp', {
-      appId: TestData.TEST_DATA.SWAG_LABS_DEMO_APP_APP_PACKAGE
+    await android.execute("mobile: terminateApp", {
+      appId: TestData.TEST_DATA.SWAG_LABS_DEMO_APP_APP_PACKAGE,
     });
 
     // Web Flow

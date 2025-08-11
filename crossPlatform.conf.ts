@@ -14,16 +14,17 @@ export const config: WebdriverIO.MultiremoteConfig = {
         "appium:automationName": "UIAutomator2",
         "appium:deviceName": "Pixel 8a",
         "appium:appPackage": TestData.TEST_DATA.SWAG_LABS_DEMO_APP_APP_PACKAGE,
-        "appium:appActivity": TestData.TEST_DATA.SWAG_LABS_DEMO_APP_APP_ACTIVITY,
+        "appium:appActivity":
+          TestData.TEST_DATA.SWAG_LABS_DEMO_APP_APP_ACTIVITY,
         "appium:noReset": true,
-        "appium:newCommandTimeout": 300
-      }
+        "appium:newCommandTimeout": 300,
+      },
     },
     web: {
       capabilities: {
-        browserName: "chrome"
-      }
-    }
+        browserName: "chrome",
+      },
+    },
   },
 
   logLevel: "info",
@@ -37,9 +38,9 @@ export const config: WebdriverIO.MultiremoteConfig = {
       "appium",
       {
         args: {
-          relaxedSecurity: true
-        }
-      }
+          relaxedSecurity: true,
+        },
+      },
     ],
   ],
 
@@ -47,7 +48,7 @@ export const config: WebdriverIO.MultiremoteConfig = {
 
   mochaOpts: {
     ui: "bdd",
-    timeout: 240000
+    timeout: 240000,
   },
 
   reporters: [
@@ -57,9 +58,9 @@ export const config: WebdriverIO.MultiremoteConfig = {
       {
         outputDir: "allure-results",
         disableWebdriverStepsReporting: true,
-        disableWebdriverScreenshotsReporting: true
-      }
-    ]
+        disableWebdriverScreenshotsReporting: true,
+      },
+    ],
   ],
 
   specFileRetries: 2,
