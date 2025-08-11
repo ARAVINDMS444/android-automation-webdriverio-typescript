@@ -17,6 +17,7 @@
   "scripts": {
     "browserstack-tests": "wdio run browserstack.conf.ts",
     "local-tests": "rimraf allure-results allure-report && wdio run local.conf.ts && allure generate --clean && allure open",
+    "cross-platform-test": "rimraf allure-results allure-report && wdio run crossPlatform.conf.ts && allure generate --clean && allure open",
     "prettier": "npx prettier --write ."
   }
 }
